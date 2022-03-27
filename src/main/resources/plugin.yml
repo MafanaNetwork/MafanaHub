@@ -1,0 +1,5 @@
+name: MafanaHub
+version: '${project.version}'
+main: me.TahaCheji.Main
+api-version: 1.18
+description: A multi server hub plugin
