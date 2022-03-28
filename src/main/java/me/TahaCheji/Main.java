@@ -1,29 +1,36 @@
 package me.TahaCheji;
 
 import me.TahaCheji.command.Admin;
+import me.TahaCheji.discordCommand.LevelCommand;
+import me.TahaCheji.events.MessageEvent;
 import me.TahaCheji.mysqlData.MySQL;
 import me.TahaCheji.mysqlData.PlayerLevelSQLGetter;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.reflections.Reflections;
 
+import javax.security.auth.login.LoginException;
+import java.lang.management.MemoryUsage;
 import java.lang.reflect.InvocationTargetException;
 
-public final class Main extends JavaPlugin implements Listener {
+public class Main extends JavaPlugin implements Listener {
 
     private static Main instance;
-    public MySQL mySQL;
-    public PlayerLevelSQLGetter data;
+    public JDA builder = null;
 
     @Override
     public void onEnable() {
         instance = this;
-        this.mySQL = new MySQL();
-        this.data = new PlayerLevelSQLGetter(this);
-        mySQL.connect();
-        if(mySQL.isConnected()) {
-            data.createTable();
+        String token = "OTU4MDg2MzAzMzQ4NTg0NDg5.YkINZw.bxryCB76r0Up3LBPrWfWaehDcgA";
+        try {
+            builder = JDABuilder.createDefault(token).build();
+        } catch (LoginException e) {
+            e.printStackTrace();
         }
+        builder.addEventListener(new MessageEvent());
+        builder.addEventListener(new LevelCommand());
         String packageName = getClass().getPackage().getName();
         for (Class<?> clazz : new Reflections(packageName, ".listeners").getSubTypesOf(Listener.class)) {
             try {
@@ -38,13 +45,8 @@ public final class Main extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
-        mySQL.disconnect();
-        // Plugin shutdown logic
     }
 
-    public MySQL getMySQL() {
-        return mySQL;
-    }
 
     public static Main getInstance() {
         return instance;

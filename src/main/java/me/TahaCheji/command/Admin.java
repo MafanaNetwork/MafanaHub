@@ -16,9 +16,20 @@ public class Admin implements CommandExecutor {
             if (!(sender.isOp())) {
                 return true;
             }
+            if(args[0].equalsIgnoreCase("get")) {
+                if(args.length == 1) {
+                    sender.sendMessage("/mfhub get level/xp | /mfhub get level/xp [player-name]");
+                    return true;
+                }
+                if(args[1].equalsIgnoreCase("level")) {
+                }
+                if(args[1].equalsIgnoreCase("xp")) {
+
+                }
+            }
             if(args[0].equalsIgnoreCase("set")) {
                 if(args.length == 1) {
-                    sender.sendMessage("/mfhub set level int | /mfhub set level int [player-name]");
+                    sender.sendMessage("/mfhub set level/xp int | /mfhub set level/xp int [player-name]");
                     return true;
                 }
                 if(args[1].equalsIgnoreCase("level")) {
@@ -28,7 +39,7 @@ public class Admin implements CommandExecutor {
                     } else if (args.length == 3) {
                         int s = Integer.parseInt(args[2]);
                         Player player = (Player) sender;
-                        new PlayerLevels(player).setLevel(player.getUniqueId(), s);
+                        new PlayerLevels(player).setLevel(s);
                         sender.sendMessage("set lvl");
                         return true;
                     }
@@ -38,7 +49,7 @@ public class Admin implements CommandExecutor {
                         sender.sendMessage("player is null");
                         return true;
                     }
-                    new PlayerLevels(player).setLevel(player.getUniqueId(), s);
+                    new PlayerLevels(player).setLevel(s);
                     sender.sendMessage("set lvl");
                 }
                 if(args[1].equalsIgnoreCase("xp")) {
@@ -48,7 +59,7 @@ public class Admin implements CommandExecutor {
                     } else if (args.length == 3) {
                         int s = Integer.parseInt(args[2]);
                         Player player = (Player) sender;
-                        new PlayerLevels(player).setXp(player.getUniqueId(), s);
+                        new PlayerLevels(player).setXp(s);
                         sender.sendMessage("set lvl");
                         return true;
                     }
@@ -58,7 +69,7 @@ public class Admin implements CommandExecutor {
                         sender.sendMessage("player is null");
                         return true;
                     }
-                    new PlayerLevels(player).setLevel(player.getUniqueId(), s);
+                    new PlayerLevels(player).setLevel(s);
                     sender.sendMessage("set lvl");
                     return true;
                 }
