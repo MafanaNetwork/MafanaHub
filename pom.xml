@@ -123,11 +123,17 @@
             <groupId>com.github.MaskedWasTaken</groupId>
             <artifactId>MafanaLevelAPI</artifactId>
             <version>V3.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
             <version>4.3.0_310</version>
+        </dependency>
+        <dependency>
+            <groupId>com.samjakob</groupId>
+            <artifactId>SpiGUI</artifactId>
+            <version>1.2.3</version>
         </dependency>
     </dependencies>
 </project>

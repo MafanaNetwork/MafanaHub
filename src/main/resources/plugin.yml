@@ -1,3 +1,4 @@
+softdepend: [MafanaLevelAPI]
 name: MafanaHub
 version: '${project.version}'
 main: me.TahaCheji.Main

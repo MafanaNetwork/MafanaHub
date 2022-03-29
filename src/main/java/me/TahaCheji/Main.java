@@ -3,6 +3,7 @@ package me.TahaCheji;
 import me.TahaCheji.command.Admin;
 import me.TahaCheji.discordCommand.LevelCommand;
 import me.TahaCheji.events.MessageEvent;
+import me.TahaCheji.events.PlayerJoin;
 import me.TahaCheji.mysqlData.MySQL;
 import me.TahaCheji.mysqlData.PlayerLevelSQLGetter;
 import net.dv8tion.jda.api.JDA;
@@ -23,7 +24,7 @@ public class Main extends JavaPlugin implements Listener {
     @Override
     public void onEnable() {
         instance = this;
-        String token = "OTU4MDg2MzAzMzQ4NTg0NDg5.YkINZw.bxryCB76r0Up3LBPrWfWaehDcgA";
+        String token = "";
         try {
             builder = JDABuilder.createDefault(token).build();
         } catch (LoginException e) {
@@ -31,15 +32,7 @@ public class Main extends JavaPlugin implements Listener {
         }
         builder.addEventListener(new MessageEvent());
         builder.addEventListener(new LevelCommand());
-        String packageName = getClass().getPackage().getName();
-        for (Class<?> clazz : new Reflections(packageName, ".listeners").getSubTypesOf(Listener.class)) {
-            try {
-                Listener listener = (Listener) clazz.getDeclaredConstructor().newInstance();
-                getServer().getPluginManager().registerEvents(listener, this);
-            } catch (InvocationTargetException | InstantiationException | IllegalAccessException | NoSuchMethodException e) {
-                e.printStackTrace();
-            }
-        }
+        getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
         getCommand("mfhub").setExecutor(new Admin());
     }
 
