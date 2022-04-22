@@ -28,4 +28,5 @@ public class SendPlayer {
     public Server getServer() {
         return server;
     }
+
 }

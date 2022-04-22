@@ -11,7 +11,7 @@
 
     <name>MafanaHub</name>
 
-    <description>A multi server hub plugin</description>
+    <description>A multi-server hub plugin</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -40,6 +40,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <outputFile>C:\Users\tahac\Desktop\MafanaHub Server\plugins\MafanaHub.jar</outputFile>
                         </configuration>
                     </execution>
                 </executions>
@@ -80,6 +81,26 @@
             <name>m2-dv8tion</name>
             <url>https://m2.dv8tion.net/releases</url>
         </repository>
+        <repository>
+            <id>everything</id>
+            <url>https://repo.citizensnpcs.co/</url>
+        </repository>
+        <repository>
+            <id>dmulloy2-repo</id>
+            <url>https://repo.dmulloy2.net/repository/public/</url>
+        </repository>
+        <repository>
+            <id>public</id>
+            <url>https://haoshoku.xyz:1234/repository/public/</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+        </repository>
+        <repository>
+            <id>krypton</id>
+            <url>https://repo.kryptonmc.org/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -88,6 +109,17 @@
             <artifactId>paper-api</artifactId>
             <version>1.18.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.luckperms</groupId>
+            <artifactId>api</artifactId>
+            <version>5.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>4.8.0</version>
         </dependency>
         <dependency>
             <groupId>dev.triumphteam</groupId>
@@ -122,7 +154,19 @@
         <dependency>
             <groupId>com.github.MaskedWasTaken</groupId>
             <artifactId>MafanaLevelAPI</artifactId>
-            <version>V3.0</version>
+            <version>V3.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>me.clip</groupId>
+            <artifactId>placeholderapi</artifactId>
+            <version>2.11.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.tr7zw</groupId>
+            <artifactId>item-nbt-api-plugin</artifactId>
+            <version>2.9.2</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -134,6 +178,65 @@
             <groupId>com.samjakob</groupId>
             <artifactId>SpiGUI</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>net.citizensnpcs</groupId>
+            <artifactId>citizens-main</artifactId>
+            <version>2.0.29-SNAPSHOT</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.NEZNAMY</groupId>
+            <artifactId>TAB</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>netty-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.googlecode.json-simple</groupId>
+                    <artifactId>json-simple</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.NEZNAMY.TAB</groupId>
+                    <artifactId>velocity-1.1.0</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.NEZNAMY.TAB</groupId>
+                    <artifactId>bungeecord</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.NEZNAMY.TAB</groupId>
+                    <artifactId>tab-velocity</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bstats</groupId>
+                    <artifactId>bstats-bungeecord</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.bstats</groupId>
+                    <artifactId>bstats-base</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>net.luckperms</groupId>
+                    <artifactId>api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.github.NEZNAMY.TAB</groupId>
+                    <artifactId>tab-bungeecord</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>me.neznamy</groupId>
+                    <artifactId>yamlassist</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.geysermc.floodgate</groupId>
+                    <artifactId>api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 </project>
